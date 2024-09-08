@@ -12,6 +12,6 @@ export type CountryType = {
     startOfWeek: string,
 }
 
-export const fetchCountriesData = async (): Promise<CountryType[]> => {
+export const fetchCountriesData = async (): Promise<Array<CountryType>> => {
     return get(`${url}/all?fields=name,languages,region,population,status,startOfWeek`);
 }

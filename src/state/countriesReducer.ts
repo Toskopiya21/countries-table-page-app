@@ -1,14 +1,14 @@
 import {
-    CHANGE_COLUMNS,
+    ADD_COLUMNS,
     CHANGE_COLUMNS_VISIBILITY,
     ChangeColumnTypeAction,
     ColumnTypeAction, GET_COUNTRIES,
     GetCountriesAction
 } from "./countriesActions"
-import {ColumnType} from "../components/App";
+import {ColumnType} from "@/components/App";
 import {v1} from "uuid";
 
-export interface CountriesState {
+export type CountriesState = {
     countries: Array<CountryType>;
     columns: Array<ColumnType>;
 }
@@ -22,17 +22,15 @@ export type CountryType = {
     startOfWeek: string,
 }
 
-const initialState: CountriesState = {
-    countries: [],
-    columns: []
-};
-
-
 type ActionsTypes =
     | GetCountriesAction
     | ColumnTypeAction
     | ChangeColumnTypeAction
 
+const initialState: CountriesState = {
+    countries: [],
+    columns: []
+};
 export const countriesReducer = (
     state = initialState,
     action: ActionsTypes
@@ -65,7 +63,7 @@ export const countriesReducer = (
                 columns: stateCopy.columns,
             };
         }
-        case CHANGE_COLUMNS: {
+        case ADD_COLUMNS: {
             const stateCopy = {...state};
 
             if (stateCopy.columns.find((t) => t.title === action.title)) {
@@ -73,7 +71,7 @@ export const countriesReducer = (
             }
 
             const column = {id: v1(), title: action.title, isVisible: true};
-            const columns = [ ...stateCopy.columns, column];
+            const columns = [...stateCopy.columns, column];
 
             // перенос колонки name на первую позицию
             const reorderedArray = columns.sort((a, b) => {

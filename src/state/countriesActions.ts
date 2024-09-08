@@ -8,7 +8,7 @@ export type ColumnTypeAction = {
     id: string,
 }
 export type ChangeColumnTypeAction = {
-    type: "CHANGE_COLUMNS",
+    type: "ADD_COLUMNS",
     title: string,
 }
 export type GetCountriesAction = {
@@ -18,7 +18,7 @@ export type GetCountriesAction = {
 
 export const GET_COUNTRIES = "GET_COUNTRIES"
 export const CHANGE_COLUMNS_VISIBILITY = "CHANGE_COLUMNS_VISIBILITY"
-export const CHANGE_COLUMNS = "CHANGE_COLUMNS"
+export const ADD_COLUMNS = "ADD_COLUMNS"
 
 export const getCountries = (limit: number) => {
     return async (dispatch: Dispatch) => {
@@ -44,7 +44,7 @@ export const changeColumnsVisibility = (id: string, isVisible: boolean): ColumnT
 
 export const changeColumns = (title: string): ChangeColumnTypeAction => {
     return {
-        type: CHANGE_COLUMNS,
+        type: ADD_COLUMNS,
         title
     };
 };
