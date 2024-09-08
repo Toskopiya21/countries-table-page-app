@@ -24,6 +24,7 @@ export const Table: React.FC<TableType> = ({countries, columns}) => {
         if (countries.length === 0) return;
         Object.keys(countries[0]).forEach(key => dispatch(changeColumns(key)));
     }, [dispatch, countries]);
+    
     return (
         <table>
             <TableHeader columns={filteredColumns}/>

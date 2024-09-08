@@ -41,7 +41,6 @@ export const countriesReducer = (
         case GET_COUNTRIES:
             const stateCopy = {...state};
 
-
             // рассматриваем items по свойству common
             const data = action.data.map(item => ({
                 ...item,
@@ -76,11 +75,17 @@ export const countriesReducer = (
             const column = {id: v1(), title: action.title, isVisible: true};
             const columns = [ ...stateCopy.columns, column];
 
-            stateCopy[action.title] = columns;
+            // перенос колонки name на первую позицию
+            const reorderedArray = columns.sort((a, b) => {
+                if (a.title === 'name') return -1;
+                if (b.title === 'name') return 1;
+                return 0;
+            });
+            stateCopy[action.title] = reorderedArray;
 
             return {
                 ...state,
-                columns: columns,
+                columns: reorderedArray,
             };
         }
         default:
