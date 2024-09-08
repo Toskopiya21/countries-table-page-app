@@ -1,0 +1,66 @@
+// Переменные
+$accent-color: rgba(114, 156, 208, 0.25);
+$border-color: #cecdcd;
+$padding: 10px;
+$border-width: 1px;
+
+// Миксины
+@mixin grid-layout($columns) {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+}
+
+@mixin cell-style {
+  padding: $padding;
+  box-sizing: border-box;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-transform: capitalize;
+  white-space: pre-wrap;
+  line-height: 15px;
+  vertical-align: middle;
+}
+
+th {
+  font-weight: 600;
+  font-size: 15px;
+  color: #000;
+  background-color: $accent-color;
+  text-transform: capitalize;
+  border: none;
+}
+
+td {
+  border: 1px solid #e3e3e3;
+}
+
+tr {
+  cursor: pointer;
+  line-height: 15px;
+  vertical-align: middle;
+
+  &:hover {
+    background-color: rgba(218, 227, 237, 0.21);
+  }
+}
+
+// Таблицы с сеткой
+.table-header,
+.table-row {
+  @include grid-layout(auto-fit);
+  align-items: stretch;
+}
+
+.header-cell,
+.cell {
+  @include cell-style;
+}
+
+.table-header {
+  td {
+    border: none;
+  }
+}

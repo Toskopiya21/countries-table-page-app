@@ -1,0 +1,64 @@
+// checkbox stiles
+.checkbox {
+  cursor: pointer;
+  margin-left: 5px;
+
+  &.style-c {
+    display: inline-block;
+    position: relative;
+    padding-left: 30px;
+    user-select: none;
+
+    input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+      height: 0;
+      width: 0;
+
+      &:checked ~ .checkbox__checkmark {
+        background-color: rgba(33, 88, 153, 0.68);
+        &:after {
+          opacity: 1;
+        }
+      }
+    }
+
+    .checkbox__checkmark {
+      position: absolute;
+      top: 2px;
+      left: 0;
+      height: 20px;
+      width: 20px;
+      background-color: #eee;
+      border-radius: 4px;
+      transition: background-color 0.25s ease;
+
+      &:after {
+        content: "";
+        position: absolute;
+        left: 7px;
+        top: 3px;
+        width: 5px;
+        height: 10px;
+        border: solid #ffffff;
+        border-width: 0 2px 2px 0;
+        transform: rotate(45deg);
+        opacity: 0;
+        transition: opacity 0.25s ease;
+      }
+    }
+
+    .checkbox__body {
+      color: #333;
+      line-height: 1.4;
+      font-size: 16px;
+    }
+  }
+}
+
+.columnVisibilityManager {
+  border-radius: 10px;
+  margin: 20px 0;
+  text-transform: capitalize;
+}
