@@ -10,7 +10,7 @@ export const TableHeader: React.FC<TableHeaderTypeProps> = React.memo(({columns}
         <thead>
             <tr className="table-header">
                 {columns.map((c) =>
-                    <th key={c.toString()} className="header-cell">{c.title}</th>
+                    <th key={c.id} className={c.title === "timezones" ?"timezones" + " " + "header-cell": "header-cell"}>{c.title}</th>
                 )}
             </tr>
         </thead>

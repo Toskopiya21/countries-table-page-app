@@ -22,6 +22,11 @@ table {
   white-space: pre-wrap;
   line-height: 15px;
   vertical-align: middle;
+
+  .timezones {
+    color: blue;
+    grid-column: span 2;
+  }
 }
 
 th {

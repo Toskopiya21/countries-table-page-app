@@ -4,6 +4,7 @@ import {ColumnType} from "../App"
 import {CountryType} from "@/api/countriesApi";
 import {TableSubRow} from "./TableSubRow";
 import "./table.scss"
+import {v1} from "uuid";
 
 export type TableBodyTypeProps = {
     countries: Array<CountryType>;
@@ -16,18 +17,18 @@ export const TableBody: React.FC<TableBodyTypeProps> = React.memo(({countries, c
     return (
         <tbody>
         {countries.map((c) =>
-            <React.Fragment key={c.toString()}>
+            <React.Fragment key={v1()}>
                 <tr className="table-row">
                     {columns.map((l) =>
-                        <React.Fragment key={l.toString()}>
+                        <React.Fragment key={l.id}>
                             {l.title === columnTitleForSubRow
-                                ? <td key={l.toString()} className="header-cell">{
+                                ? <td key={l.id} className="header-cell">{
                                     ((Object.keys(c[columnTitleForSubRow])).length == 1)
                                         ? Object.values(c[columnTitleForSubRow])
                                         : (Object.keys(c[columnTitleForSubRow])).length
                                 }
                                 </td>
-                                : <td key={l.toString()} className="header-cell">{c[`${l.title}`]}</td>
+                                : <td key={l.id} className={l.title === "timezones" ?"timezones" + " " + "header-cell": "header-cell"}>{c[`${l.title}`]}</td>
                             }
                         </React.Fragment>
                     )}
